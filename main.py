@@ -31,4 +31,10 @@ if __name__ == "__main__":
 
     notify = Notify()
     groups = notify.get_group_list()
-    logger.info(f"{groups[0]=}")
+    logger.info(f"group count: {len(groups)}")
+
+    for g in groups:
+        logger.info(f"{g=}")
+
+    token = notify.issue_token("test")
+    logger.info(f"[issue] {token=}")
