@@ -19,7 +19,7 @@ class Countdown(BaseModel):
         self.event = Event()
         self.thread = Thread(target=self._run)
 
-    def _run(self):
+    def _run(self) -> None:
         for i in range(self.seconds, 0, -1):
             if self.event.is_set():
                 print()
@@ -32,9 +32,9 @@ class Countdown(BaseModel):
             sys.stdout.flush()
             sleep(1)
 
-    def start(self):
+    def start(self) -> None:
         self.thread.start()
 
-    def stop(self):
+    def stop(self) -> None:
         self.event.set()
         self.thread.join()

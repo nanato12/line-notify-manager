@@ -105,7 +105,7 @@ class Notify(BaseModel):
 
             # login
             login_params = params.copy()
-            login_params.update({"__csrf": csrf_token})
+            login_params.update({"__csrf": csrf_token})  # type: ignore [dict-item]
             r = self.session.get(
                 urljoin(LINEAccessURL.HOST, res.redirectPath),
                 params=login_params,
@@ -122,4 +122,4 @@ class Notify(BaseModel):
         logger.debug(f"get-group-list: {r.json()}")
 
         res = GetGroupListResponse.model_validate(r.json())
-        return res.results
+        return res.results  # type: ignore [no-any-return]
