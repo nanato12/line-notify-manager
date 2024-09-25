@@ -3,7 +3,8 @@ from logging import StreamHandler, basicConfig
 from logging.handlers import TimedRotatingFileHandler
 from os import makedirs
 
-from app.logger import get_file_path_logger
+from notify import Notify
+from notify.logger import get_file_path_logger
 
 LOG_DIRECTORY = "logs"
 
@@ -18,7 +19,7 @@ if __name__ == "__main__":
         format="%(asctime)s [%(levelname)s] %(name)s:%(lineno)s %(message)s",
         handlers=[
             TimedRotatingFileHandler(
-                f"{LOG_DIRECTORY}/app.log",
+                f"{LOG_DIRECTORY}/notify.log",
                 when="midnight",
                 backupCount=30,
                 interval=1,
@@ -28,4 +29,6 @@ if __name__ == "__main__":
         ],
     )
 
-    logger.info("hello.")
+    notify = Notify()
+    groups = notify.get_group_list()
+    logger.info(f"{groups[0]=}")
