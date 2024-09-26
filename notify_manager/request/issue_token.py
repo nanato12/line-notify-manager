@@ -2,7 +2,7 @@ from typing import Any, Self
 
 from pydantic import BaseModel
 
-from notify.models.group import Group
+from notify_manager.models.group import Group
 
 
 class IssueTokenRequest(BaseModel):

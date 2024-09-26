@@ -8,9 +8,9 @@ from urllib.parse import parse_qs, urljoin, urlparse
 from pydantic import BaseModel, Field, ValidationError
 from requests import HTTPError, JSONDecodeError, Session
 
-from notify import config
-from notify.decorator import save_cookie
-from notify.exceptions import (
+from notify_manager import config
+from notify_manager.decorator import save_cookie
+from notify_manager.exceptions import (
     AuthorizeException,
     GetGroupListException,
     IssueTokenException,
@@ -18,23 +18,23 @@ from notify.exceptions import (
     QRLoginSessionException,
     QRLoginWaitException,
 )
-from notify.logger import get_file_path_logger
-from notify.models.group import Group
-from notify.request.issue_token import IssueTokenRequest
-from notify.response.get_group_list import GetGroupListResponse
-from notify.response.issue_token import IssueTokenResponse
-from notify.response.qr_login_pin_wait import QRLoginPINWaitResponse
-from notify.response.qr_login_session import QRLoginSessionResponse
-from notify.response.qr_login_wait import QRLoginWaitResponse
-from notify.urls.access import LINEAccessURL
-from notify.urls.notify import NotifyURL
-from notify.utils.countdown import Countdown
-from notify.utils.scraping import extract_csrf
+from notify_manager.logger import get_file_path_logger
+from notify_manager.models.group import Group
+from notify_manager.request.issue_token import IssueTokenRequest
+from notify_manager.response.get_group_list import GetGroupListResponse
+from notify_manager.response.issue_token import IssueTokenResponse
+from notify_manager.response.qr_login_pin_wait import QRLoginPINWaitResponse
+from notify_manager.response.qr_login_session import QRLoginSessionResponse
+from notify_manager.response.qr_login_wait import QRLoginWaitResponse
+from notify_manager.urls.access import LINEAccessURL
+from notify_manager.urls.notify import NotifyURL
+from notify_manager.utils.countdown import Countdown
+from notify_manager.utils.scraping import extract_csrf
 
 logger = get_file_path_logger(__name__)
 
 
-class Notify(BaseModel):
+class NotifyManager(BaseModel):
     class Config:
         arbitrary_types_allowed = True
 

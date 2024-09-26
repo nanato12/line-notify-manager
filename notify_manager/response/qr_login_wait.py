@@ -1,6 +1,6 @@
 from typing import Optional
 
-from notify.response._base_wait import BaseWaitResponse
+from notify_manager.response._base_wait import BaseWaitResponse
 
 
 class QRLoginWaitResponse(BaseWaitResponse):

@@ -4,7 +4,7 @@ from os.path import dirname
 from typing import TYPE_CHECKING, Callable, ParamSpec, TypeVar
 
 if TYPE_CHECKING:
-    from notify import Notify
+    from notify_manager import Notify
 
 T = TypeVar("T")
 P = ParamSpec("P")
