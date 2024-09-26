@@ -1,9 +1,5 @@
-from typing import Optional
-
-from pydantic import BaseModel
+from notify.response._base_wait import BaseWaitResponse
 
 
-class QRLoginPINWaitResponse(BaseModel):
-    redirectPath: Optional[str]
-    errorCode: Optional[int]
-    error: Optional[str]
+class QRLoginPINWaitResponse(BaseWaitResponse):
+    pass
