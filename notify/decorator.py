@@ -17,8 +17,8 @@ def save_cookie(func: Callable[P, T]) -> Callable[P, T]:
         n: Notify = args[0]  # type: ignore
 
         makedirs(dirname(n.cookie_path), exist_ok=True)
-        with open(n.cookie_path, "w") as json_file:
-            json.dump(n.session.cookies.get_dict(), json_file, indent=2)  # type: ignore
+        with open(n.cookie_path, "w") as f:
+            json.dump(n.session.cookies.get_dict(), f, indent=2)  # type: ignore
 
         return result
 
