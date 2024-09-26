@@ -45,7 +45,7 @@ class NotifyManager(BaseModel):
 
     @property
     def session_dir(self) -> str:
-        return path_join(config.COOKIE_DIR, self.session_name)
+        return path_join(config.SESSION_DIR, self.session_name)
 
     @property
     def cookie_path(self) -> str:

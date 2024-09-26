@@ -132,6 +132,6 @@ dmypy.json
 /logs
 
 .tmp
-.cookies
+.sessions
 
 *.html
