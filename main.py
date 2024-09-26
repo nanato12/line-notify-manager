@@ -4,7 +4,9 @@ from logging.handlers import TimedRotatingFileHandler
 from os import makedirs
 
 from notify import Notify
-from notify.logger import get_file_path_logger
+
+from notify_manager import NotifyManager
+from notify_manager.logger import get_file_path_logger
 
 LOG_DIRECTORY = "logs"
 
@@ -29,12 +31,15 @@ if __name__ == "__main__":
         ],
     )
 
-    notify = Notify()
-    groups = notify.get_group_list()
+    manager = NotifyManager()
+    groups = manager.get_group_list()
     logger.info(f"group count: {len(groups)}")
 
     for g in groups:
         logger.info(f"{g=}")
 
-    token = notify.issue_token("test")
+    token = manager.issue_token("test")
     logger.info(f"[issue] {token=}")
+
+    notify = Notify(token=token)
+    notify.send_text("notify manager ok.")
